@@ -33,6 +33,13 @@ class UI {
         }, 3000);
     }
 
+    clearFields() {
+        document.getElementById('first-name').value = '';
+        document.getElementById('last-name').value = '',
+        document.getElementById('email').value = '';
+        document.getElementById('message').value = '';
+    }
+
     hilightField(id) {
         document.getElementById(`${id}`).style.border = '1px red solid';
     }
@@ -58,7 +65,8 @@ document.getElementById('btn').addEventListener('click', function(e){
     if(firstName === '' || lastName === '' || email === '' || message === '') {
     ui.showAlert('Please fill out all fields', 'deny')
     } else {
-        ui.showAlert('From has been submitted!', 'success')
+        ui.showAlert('From has been submitted!', 'success');
+        ui.clearFields();
     }
 
     if(firstName === ''){
