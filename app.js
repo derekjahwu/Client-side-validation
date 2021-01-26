@@ -47,7 +47,31 @@ class UI {
     removeHilight(id) {
         document.getElementById(`${id}`).style.border = 'none';
     }
-}
+    
+    sendEmail (email,message) {
+        Email.send({
+            Host : "smtp.gmail.com",
+            Username : "derekjwu96@gmail.com",
+            Password : "jwhkhmqghpasuwhv",
+            To : `derekjwu96@gmail.com, ${email}`,
+            From : 'derekjwu96@gmail.com',
+            Subject : `Thanks for Visiting!`,
+            Body : `Hello,<br>Thank you for visitng my website! My name is Derek Wu and I am a self-taugh web-developer and I enjoy thinking of website designs and implementing them using code. Please visit my website at www.derekjahwu.com for more of my work. <br>Best,<br>Derek J. Wu<br><br>${message}`,
+    })};
+
+    // sendPersonalEmail (firstName, lastName, email, message) {
+    //     Email.send({
+    //         Host : "smtp.gmail.com",
+    //         Username : "derekjwu96@gmail.com",
+    //         Password : "iwzimrarmdhrmjru",
+    //         To : `derekjwu96@gmail.com,`,
+    //         From : 'derekjwu96@gmail.com',
+    //         Subject : `${firstName} ${lastName} has Sent You a Message`,
+    //         Body : `${message}`,
+    // })};
+
+
+};
 
 
 
@@ -67,6 +91,8 @@ document.getElementById('btn').addEventListener('click', function(e){
     } else {
         ui.showAlert('From has been submitted!', 'success');
         ui.clearFields();
+        ui.sendEmail(email,message);
+        // ui.sendPersonalEmail(firstName, lastName, email, message);
     }
 
     if(firstName === ''){
